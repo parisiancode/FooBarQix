@@ -1,5 +1,7 @@
 # FooBarQix
 
+Java Maven project developed on Eclipse
+
 Credit http://codingdojo.org/kata/FooBarQix/
 
 You should implement a function String compute(String) which implements the following rules.
