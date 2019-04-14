@@ -23,7 +23,7 @@ public class FooBarQix {
 		divideNumbers(Integer.parseInt(input), sb);
 		input.codePoints().mapToObj(c -> String.valueOf((char) c))
 				.forEach(x -> containsNumbers(Integer.parseInt(x), sb));
-		return StringUtils.isBlank(sb.toString()) ? input : sb.toString();
+		return StringUtils.isBlank(sb.toString()) ? input.replaceAll("0", "*") : sb.toString();
 	}
 
 	private void divideNumbers(Integer number, StringBuilder sb) {
@@ -37,6 +37,10 @@ public class FooBarQix {
 		for (Entry<Integer, String> entry : myMap.entrySet()) {
 			if (number == entry.getKey())
 				sb.append(entry.getValue());
+			else if (number == 0 && sb.length() > 0) {
+				sb.append("*");
+				break;
+			}
 		}
 	}
 }
