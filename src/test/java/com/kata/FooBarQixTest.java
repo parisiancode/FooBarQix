@@ -27,6 +27,7 @@ class FooBarQixTest {
 		assertTrue(fbq.compute("6").equals("Foo"));
 		assertTrue(fbq.compute("9").equals("Foo"));
 		assertTrue(fbq.compute("12").equals("Foo"));
+		assertTrue(fbq.compute("13").equals("Foo"));
 	}
 
 	@Test
@@ -49,8 +50,8 @@ class FooBarQixTest {
 	}
 
 	@Test
-	void divideBy3_and_5_gives_FooBar() {
-		assertTrue(fbq.compute("15").equals("FooBar"));
+	void divideBy3_and_5_contains_5_gives_FooBarBar() {
+		assertTrue(fbq.compute("15").equals("FooBarBar"));
 	}
 
 	@Test
@@ -61,6 +62,11 @@ class FooBarQixTest {
 	@Test
 	void divideBy5_and_7_pluscontains_3_and_5_gives_BarQixFooBar() {
 		assertTrue(fbq.compute("35").equals("BarQixFooBar"));
+	}
+
+	@Test
+	void divideBy3_contains_2_3() {
+		assertTrue(fbq.compute("33").equals("FooFooFoo"));
 	}
 
 }

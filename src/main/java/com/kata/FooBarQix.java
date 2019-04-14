@@ -19,20 +19,24 @@ public class FooBarQix {
 	}
 
 	public String compute(String input) {
-		Integer nbr = Integer.parseInt(input);
 		StringBuilder sb = new StringBuilder();
-		for (Entry<Integer, String> entry : myMap.entrySet()) {
-			if (nbr % entry.getKey() == 0)
-				sb.append(entry.getValue());
-		}
-		input.codePoints().mapToObj(c -> String.valueOf((char) c)).forEach(this::analyzeInput);
-		return StringUtils.isBlank(sb.toString()) ? nbr.toString() : sb.toString();
+		divideNumbers(Integer.parseInt(input), sb);
+		input.codePoints().mapToObj(c -> String.valueOf((char) c))
+				.forEach(x -> containsNumbers(Integer.parseInt(x), sb));
+		return StringUtils.isBlank(sb.toString()) ? input : sb.toString();
 	}
 
-	private String analyzeInput(String number) {
-		int key = Integer.parseInt(number);
-		if (myMap.containsKey(key))
-			return myMap.get(key);
-		return "";
+	private void divideNumbers(Integer number, StringBuilder sb) {
+		for (Entry<Integer, String> entry : myMap.entrySet()) {
+			if (number % entry.getKey() == 0)
+				sb.append(entry.getValue());
+		}
+	}
+
+	private void containsNumbers(Integer number, StringBuilder sb) {
+		for (Entry<Integer, String> entry : myMap.entrySet()) {
+			if (number == entry.getKey())
+				sb.append(entry.getValue());
+		}
 	}
 }
